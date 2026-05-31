@@ -6,9 +6,6 @@ import plotly.graph_objects as go
 
 st.set_page_config(page_title="SDG 3 Insights Dashboard", layout="wide")
 
-==========================================
-1. DATA LOADING AND TIME TRAJECTORY SIMULATION
-==========================================
 @st.cache_data
 def load_and_generate_timeline_data():
     try:
@@ -47,9 +44,6 @@ def load_and_generate_timeline_data():
 
 df_dashboard, years_list = load_and_generate_timeline_data()
 
-==========================================
-2. HEADER SECTION
-==========================================
 st.markdown(
     """
     <div style="background-color:#1f2c56;padding:20px;border-radius:10px;margin-bottom:25px">
@@ -60,9 +54,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-==========================================
-3. INTERACTIVE TIMELINE SLIDER
-==========================================
 st.markdown("### 🗓️ Dashboard Timeline Controller")
 selected_year = st.slider(
     "Drag the slider to select a specific year. All KPIs, maps, and statistical distributions below will instantly update.",
@@ -76,9 +67,6 @@ df_filtered = df_dashboard[df_dashboard['Year'] == selected_year]
 
 st.markdown("---")
 
-==========================================
-4. KEY INDICATORS (KPIs RIBBON)
-==========================================
 st.markdown("### 📊 Key Performance Indicators")
 avg_sdg3 = df_filtered['SDG3_Health'].mean()
 avg_sdg1 = df_filtered['SDG1_NoPoverty'].mean()
@@ -97,9 +85,6 @@ with kpi4:
 
 st.markdown("---")
 
-==========================================
-5. DYNAMIC VISUALIZATIONS GRID
-==========================================
 left_col, right_col = st.columns([1.3, 1.7])
 
 with left_col:
